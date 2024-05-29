@@ -1,32 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&family=Roboto:wght@400;900&display=swap');
 
-:root {
-  --glow-color: #01ff02;
-}
-
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: -2;
-}
-
-#background-video {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-  opacity: 0.55;
-}
-
-.preloader-container {
+.preloaderContainer {
+  --glow-color: #01ff02; /* Scoped to the PreLoader component */
+  
   position: relative;
   display: flex;
   flex-direction: column;
@@ -38,7 +14,29 @@
   padding: 20px;
 }
 
-.background-image {
+.videoBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: -2;
+}
+
+.backgroundVideo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  opacity: 0.55;
+}
+
+.backgroundImage {
   position: absolute;
   bottom: 110px;
   height: 50%;
@@ -63,7 +61,7 @@
   }
 }
 
-.glowing-btn {
+.glowingBtn {
   margin-bottom: 70px;
   position: relative;
   color: var(--glow-color);
@@ -83,19 +81,19 @@
   animation: border-flicker 2s linear infinite;
 }
 
-.glowing-txt {
+.glowingTxt {
   float: left;
   margin-right: -0.8em;
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
   animation: text-flicker 3s linear infinite;
 }
 
-.faulty-letter {
+.faultyLetter {
   opacity: 0.5;
   animation: faulty-flicker 2s linear infinite;
 }
 
-.glowing-btn::before {
+.glowingBtn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -109,7 +107,7 @@
   pointer-events: none;
 }
 
-.glowing-btn::after {
+.glowingBtn::after {
   content: "";
   position: absolute;
   top: 0;
@@ -123,28 +121,28 @@
   transition: opacity 100ms linear;
 }
 
-.glowing-btn:hover {
+.glowingBtn:hover {
   color: rgba(0, 0, 0, 0.8);
   text-shadow: none;
   animation: none;
 }
 
-.glowing-btn:hover .glowing-txt {
+.glowingBtn:hover .glowingTxt {
   animation: none;
 }
 
-.glowing-btn:hover .faulty-letter {
+.glowingBtn:hover .faultyLetter {
   animation: none;
   text-shadow: none;
   opacity: 1;
 }
 
-.glowing-btn:hover:before {
+.glowingBtn:hover:before {
   filter: blur(1.5em);
   opacity: 1;
 }
 
-.glowing-btn:hover:after {
+.glowingBtn:hover:after {
   opacity: 1;
 }
 

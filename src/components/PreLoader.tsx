@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
-import '../styles/PreLoader.css';
+import styles from '../styles/PreLoader.module.css';
 import videoBackground from '../assets/desktop-backgrounds/video-backgrounds/Pre-Loader/prospera-main-bg-1.mp4';
-import logo from '../assets/images/Pre-Loader Images/logo.png';
-import h4ck3rhuman from '../assets/images/Pre-Loader Images/h4ck3rhuman.png';
 import { useRouter } from 'next/router';
 
 interface PreLoaderProps {
@@ -14,7 +12,7 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
 
   const handleButtonClick = () => {
     const userResponse = prompt("DO YOU WISH TO PROSPER HUMAN?");
-    if (userResponse === "YES" || userResponse === "Yes" || userResponse === "yes") {
+    if (userResponse?.toLowerCase() === "yes") {
       onComplete();
       router.push('/login');
     } else {
@@ -42,10 +40,10 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
     if (process.env.NODE_ENV === 'production') {
       const originalConsoleLog = console.log;
       Object.defineProperty(window, 'console', {
-        get: function() {
+        get() {
           throw new Error('Console is disabled');
         },
-        set: function(val) {
+        set(val) {
           originalConsoleLog(val);
         }
       });
@@ -58,17 +56,17 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
   }, []);
 
   return (
-    <div className="preloader-container">
-      <div className="video-background">
-        <video autoPlay muted loop playsInline id="background-video">
+    <div className={styles.preloaderContainer}>
+      <div className={styles.videoBackground}>
+        <video autoPlay muted loop playsInline id="background-video" className={styles.backgroundVideo}>
           <source src={videoBackground} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-      <img src={h4ck3rhuman as unknown as string} alt="Background Image" className="background-image" />
-      <img src={logo as unknown as string} alt="Prospera Logo" className="logo" />
-      <button className="glowing-btn" onClick={handleButtonClick}>
-        <span className="glowing-txt">P<span className="faulty-letter">ROSPER</span>A</span>
+      <img src="/images/logo.png" alt="Prospera Logo" className={styles.logo} />
+      <img src="/images/h4ck3rhuman.png" alt="Background Image" className={styles.backgroundImage} />
+      <button className={styles.glowingBtn} onClick={handleButtonClick}>
+        <span className={styles.glowingTxt}>P<span className={styles.faultyLetter}>ROSPER</span>A</span>
       </button>
     </div>
   );

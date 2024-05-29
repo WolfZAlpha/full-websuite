@@ -1,9 +1,12 @@
-// src/components/LoginPage.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const LoginPage = () => {
+type LoginPageProps = {
+  onLogin: () => void;
+};
+
+const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
@@ -12,7 +15,7 @@ const LoginPage = () => {
     try {
       const response = await axios.post('/api/auth/login', { email, password });
       localStorage.setItem('jwtToken', response.data.token);
-      router.push('/desktop'); // Redirect to the desktop page
+      onLogin(); // Call the onLogin prop function
     } catch (error) {
       console.error('Login error:', error);
     }
