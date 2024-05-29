@@ -1,0 +1,14 @@
+// tsconfig.server.json
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "./dist",
+      "rootDir": "./server",
+      "noEmit": false,
+      "module": "commonjs",
+      "moduleResolution": "node" // Change this to 'node'
+    },
+    "include": ["server/**/*.ts"],
+    "exclude": ["node_modules"]
+  }
+  
