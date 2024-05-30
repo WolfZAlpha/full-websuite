@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2020",
+    "module": "ES2020",
+    "lib": ["dom", "dom.iterable", "es2020"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -10,7 +10,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "outDir": "./dist/server",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["server/**/*.ts"],
   "exclude": ["node_modules"]
